@@ -1,45 +1,19 @@
-import React, { useState, useEffect } from "react";
-import api from "../../api";
+import React from "react";
+
 import TelaInicial from "./Componentes/Tela Inicial";
+import Cards from "./Componentes/Cards";
 
-function Galeria (Props) {
-  const [animals, setAnimals] = useState([])
-
-  useEffect(() => {
-    api
-      .get('/animals/rand/10')
-      .then(response => {
-        setAnimals(response.data);
-      })
-    .catch((err) => {
-      console.log(err);
-    });
-  }, []) 
-
+function Galeria () {
   return (
     <>
       <TelaInicial />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
 
-      <h1 id="">Galeria</h1>
-      <ul> 
-        {animals.map(animal => (
-          <li key={animal.id}>
-            <p>{animal.name}</p>
-          </li> 
-        ))}
-      </ul>
-      {/* <button onClick={animals}>
-        Novos animais
-      </button> */}
-    </>
+      <h1 id="galeria" className="text-4xl font-semibold mb-8 ml-16 mt-32">Galeria</h1>
+
+      <div className="flex justify-center items-center flex-col">
+        <Cards />
+      </div>
+  </>
   ) 
 }
 
